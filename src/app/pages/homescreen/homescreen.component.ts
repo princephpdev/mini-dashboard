@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ButtonComponent } from "../../components/button/button.component";
 
 @Component({
-  selector: 'app-homescreen',
+  selector: "app-homescreen",
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './homescreen.component.html',
-  styleUrl: './homescreen.component.scss'
+  templateUrl: "./homescreen.component.html",
+  styleUrl: "./homescreen.component.scss",
+  imports: [CommonModule, ButtonComponent],
 })
-export class HomescreenComponent {
-
-}
+export class HomescreenComponent {}
