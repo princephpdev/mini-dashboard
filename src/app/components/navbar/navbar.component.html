@@ -1,1 +1,5 @@
-<p>navbar works!</p>
+<mat-toolbar color="primary" *ngIf="showNavigation" [@fadeInOut]>
+    <app-button text="Home" link="/"></app-button>
+    <app-button text="Table" link="/table"></app-button>
+    <app-button text="Directive Screen" link="/directive-screen"></app-button>
+</mat-toolbar>
