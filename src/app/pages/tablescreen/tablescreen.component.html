@@ -1,32 +1,49 @@
 <div class="table-container">
-    <mat-form-field>
+    <!-- <mat-form-field>
         <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+    </mat-form-field> -->
+
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event, 'id')" placeholder="Filter ID">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event, 'type')" placeholder="Filter Type">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event, 'links.self')" placeholder="Filter Links">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event, 'attributes.content')" placeholder="Filter Attributes">
     </mat-form-field>
 
-    <table mat-table [dataSource]="dataSource" matSort>
+    <table mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-            <td mat-cell *matCellDef="let element">{{ element?.id }}</td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id">ID</th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
         </ng-container>
 
         <ng-container matColumnDef="type">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
-            <td mat-cell *matCellDef="let element">{{ element?.type }}</td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by type">Type</th>
+            <td mat-cell *matCellDef="let element">{{ element.type }}</td>
         </ng-container>
 
         <ng-container matColumnDef="links">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Links</th>
-            <td mat-cell *matCellDef="let element">{{ element?.links?.self }}</td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header="links.self" sortActionDescription="Sort by links">
+                Links</th>
+            <td mat-cell *matCellDef="let element">{{ element.links.self }}</td>
         </ng-container>
 
         <ng-container matColumnDef="attributes">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Attributes</th>
-            <td mat-cell *matCellDef="let element">{{ element?.attributes?.content }}</td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header="attributes.content"
+                sortActionDescription="Sort by Attributes">Attributes
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.attributes.content }}</td>
         </ng-container>
 
         <ng-container matColumnDef="relationships">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Relationships</th>
-            <td mat-cell *matCellDef="let element">{{ element?.relationships | json }}</td>
+            <th mat-header-cell *matHeaderCellDef>
+                Relationships</th>
+            <td mat-cell *matCellDef="let element">{{ element.relationships | json }}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
